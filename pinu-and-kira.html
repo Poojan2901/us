@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pinu &amp; Kira 353 km, 0 Distance</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Karla:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0b0e17;
+  --ink-2:#111528;
+  --paper:#f6efe2;
+  --lamp:#e8a34d;
+  --lamp-dim:#b97a35;
+  --rose:#e0788a;
+  --thread:#5b6a9c;
+  --line:rgba(232,163,77,0.35);
+  --fs-hero: clamp(2.6rem, 7vw, 6rem);
+  --fs-h2: clamp(1.8rem, 4.2vw, 3.2rem);
+  --fs-h3: clamp(1.2rem, 2.4vw, 1.7rem);
+  --fs-body: clamp(1rem, 1.6vw, 1.15rem);
+  --fs-label: clamp(0.7rem, 1vw, 0.82rem);
+  --fs-letter: clamp(1.05rem, 2vw, 1.35rem);
+  --sp-section: clamp(4rem, 10vw, 9rem);
+  --sp-gutter: clamp(1.25rem, 6vw, 6rem);
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--ink);
+  color:var(--paper);
+  font-family:'Karla', sans-serif;
+  font-weight:400;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--lamp); color:var(--ink);}
+.serif{font-family:'Cormorant Garamond', serif;}
+.wrap{
+  max-width:1100px;
+  margin:0 auto;
+  padding-left:var(--sp-gutter);
+  padding-right:var(--sp-gutter);
+}
+a{color:inherit;}
+
+/* subtle starfield */
+#stars{position:fixed; inset:0; z-index:0; pointer-events:none; opacity:0.6;}
+
+/* ---------- HERO ---------- */
+.hero{
+  position:relative;
+  min-height:100svh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:var(--sp-gutter);
+  z-index:1;
+}
+.hero .eyebrow{
+  font-size:var(--fs-label);
+  letter-spacing:0.35em;
+  text-transform:uppercase;
+  color:var(--lamp);
+  margin-bottom:1.4rem;
+  opacity:0.9;
+}
+.hero h1{
+  font-family:'Cormorant Garamond', serif;
+  font-weight:500;
+  font-size:var(--fs-hero);
+  line-height:1.05;
+  letter-spacing:0.01em;
+}
+.hero h1 .amp{
+  color:var(--rose);
+  font-style:italic;
+  font-weight:400;
+  display:inline-block;
+  margin:0 0.15em;
+}
+.hero p.sub{
+  margin-top:1.6rem;
+  font-size:var(--fs-body);
+  max-width:38ch;
+  color:#cfd3e6;
+  line-height:1.6;
+}
+
+/* distance line — signature element */
+.distance{
+  margin-top:clamp(2.5rem, 6vw, 4.5rem);
+  width:min(100%, 620px);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:0.7rem;
+}
+.distance svg{width:100%; height:auto; overflow:visible;}
+.distance .path{
+  fill:none;
+  stroke:var(--line);
+  stroke-width:1.4;
+  stroke-dasharray:5 7;
+}
+.distance .pulse{
+  fill:none;
+  stroke:var(--rose);
+  stroke-width:2.2;
+  stroke-linecap:round;
+  stroke-dasharray:14 620;
+  stroke-dashoffset:0;
+  animation:travel 4.5s ease-in-out infinite;
+  filter:drop-shadow(0 0 4px var(--rose));
+}
+@keyframes travel{
+  0%{stroke-dashoffset:634;}
+  100%{stroke-dashoffset:-14;}
+}
+.distance .pin circle{fill:var(--lamp);}
+.distance .pin text{
+  font-family:'Karla', sans-serif;
+  font-size:11px;
+  fill:#cfd3e6;
+  letter-spacing:0.05em;
+}
+.distance .caption{
+  font-size:var(--fs-label);
+  letter-spacing:0.15em;
+  text-transform:uppercase;
+  color:#8a90ad;
+}
+.distance .caption strong{color:var(--rose); font-weight:600;}
+
+.scroll-cue{
+  position:absolute;
+  bottom:2.2rem;
+  font-size:var(--fs-label);
+  letter-spacing:0.3em;
+  text-transform:uppercase;
+  color:#6b7191;
+  animation:bob 2.4s ease-in-out infinite;
+}
+@keyframes bob{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(8px);}
+}
+
+/* ---------- SECTIONS ---------- */
+section.chapter{
+  position:relative;
+  z-index:1;
+  padding:var(--sp-section) 0;
+  border-top:1px solid rgba(255,255,255,0.06);
+}
+.chapter-head{
+  display:flex;
+  align-items:baseline;
+  gap:1.2rem;
+  margin-bottom:clamp(1.6rem, 4vw, 2.6rem);
+}
+.chapter-num{
+  font-family:'Cormorant Garamond', serif;
+  font-style:italic;
+  font-size:var(--fs-h3);
+  color:var(--lamp-dim);
+  white-space:nowrap;
+}
+.chapter-date{
+  font-size:var(--fs-label);
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  color:#7a8099;
+}
+h2.chapter-title{
+  font-family:'Cormorant Garamond', serif;
+  font-weight:500;
+  font-size:var(--fs-h2);
+  line-height:1.15;
+  margin-bottom:1.4rem;
+  max-width:18ch;
+}
+.chapter p{
+  font-size:var(--fs-body);
+  line-height:1.85;
+  color:#d6d9ea;
+  max-width:62ch;
+}
+.chapter p + p{margin-top:1.1rem;}
+.chapter em{color:var(--rose); font-style:italic;}
+
+.reveal{
+  opacity:0;
+  transform:translateY(28px);
+  transition:opacity 0.9s ease, transform 0.9s ease;
+}
+.reveal.in{opacity:1; transform:translateY(0);}
+
+/* mirrored duty cards */
+.duty-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:clamp(1rem, 3vw, 2rem);
+  margin-top:2rem;
+}
+@media (max-width:640px){.duty-grid{grid-template-columns:1fr;}}
+.duty-card{
+  border:1px solid rgba(232,163,77,0.25);
+  border-radius:2px;
+  padding:clamp(1.2rem, 3vw, 1.8rem);
+  background:linear-gradient(180deg, rgba(232,163,77,0.05), transparent);
+}
+.duty-card .yr{
+  font-size:var(--fs-label);
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  color:var(--lamp);
+}
+.duty-card p{font-size:var(--fs-body); margin-top:0.6rem; color:#d6d9ea; line-height:1.7;}
+
+/* timeline for late-night chapter */
+.tags{
+  display:flex; flex-wrap:wrap; gap:0.6rem;
+  margin-top:1.6rem;
+}
+.tags span{
+  font-size:var(--fs-label);
+  letter-spacing:0.08em;
+  border:1px solid rgba(255,255,255,0.15);
+  padding:0.4em 0.9em;
+  border-radius:999px;
+  color:#b8bcd4;
+}
+
+/* argument / storm chapter */
+.storm{
+  border-left:2px solid var(--rose);
+  padding-left:clamp(1rem, 3vw, 1.8rem);
+  margin-top:1.6rem;
+}
+
+/* proposal highlight */
+.highlight-box{
+  margin-top:2rem;
+  padding:clamp(1.6rem, 4vw, 2.6rem);
+  background:radial-gradient(120% 140% at 0% 0%, rgba(224,120,138,0.12), transparent 60%);
+  border:1px solid rgba(224,120,138,0.3);
+}
+.highlight-box .date-big{
+  font-family:'Cormorant Garamond', serif;
+  font-size:clamp(2.2rem, 6vw, 3.6rem);
+  color:var(--rose);
+  font-style:italic;
+}
+
+/* ---------- GALLERY ---------- */
+.star-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(110px, 1fr));
+  gap:clamp(0.8rem, 2vw, 1.6rem);
+}
+.star-photo{
+  position:relative;
+  aspect-ratio:1/1;
+  border-radius:18%;
+  background:#1a1f38 center/cover no-repeat;
+  cursor:pointer;
+  border:none;
+  padding:0;
+  transition:transform 0.35s ease, filter 0.35s ease;
+  filter:grayscale(0.15) brightness(0.85);
+}
+.star-photo:hover, .star-photo:focus-visible{
+  transform:scale(1.12) rotate(-3deg);
+  filter:grayscale(0) brightness(1.05);
+  outline:none;
+}
+.star-photo .num{
+  position:absolute;
+  bottom:8%; left:50%;
+  transform:translateX(-50%);
+  font-size:0.65rem;
+  letter-spacing:0.1em;
+  color:var(--lamp);
+  background:rgba(11,14,23,0.55);
+  padding:0.1em 0.5em;
+  pointer-events:none;
+  opacity:0;
+  transition:opacity 0.3s ease;
+}
+.star-photo:hover .num{opacity:1;}
+
+.modal-overlay{
+  position:fixed; inset:0;
+  background:rgba(6,7,13,0.92);
+  display:flex; align-items:center; justify-content:center;
+  z-index:50;
+  opacity:0; visibility:hidden;
+  transition:opacity 0.35s ease, visibility 0.35s ease;
+  padding:1.5rem;
+}
+.modal-overlay.open{opacity:1; visibility:visible;}
+.modal-box{
+  max-width:480px;
+  width:100%;
+  background:var(--ink-2);
+  border:1px solid rgba(232,163,77,0.3);
+  padding:clamp(1.4rem, 4vw, 2.2rem);
+  position:relative;
+  text-align:center;
+  transform:translateY(16px) scale(0.97);
+  transition:transform 0.35s ease;
+}
+.modal-overlay.open .modal-box{transform:translateY(0) scale(1);}
+.modal-close{
+  position:absolute; top:0.6rem; right:0.9rem;
+  background:none; border:none;
+  color:#b8bcd4; font-size:1.6rem;
+  cursor:pointer; line-height:1;
+}
+.modal-photo-wrap{
+  width:min(260px, 70vw);
+  aspect-ratio:1/1;
+  margin:0.5rem auto 1.4rem;
+  border-radius:18%;
+  background:#1a1f38;
+}
+.modal-photo{width:100%; height:100%; object-fit:cover; display:block;}
+.modal-caption{
+  font-family:'Cormorant Garamond', serif;
+  font-size:var(--fs-letter);
+  font-style:italic;
+  color:#ece6d8;
+  line-height:1.6;
+  margin-bottom:1.4rem;
+}
+.modal-audio-row{
+  display:flex; align-items:center; gap:0.8rem;
+}
+.audio-btn{
+  width:38px; height:38px; border-radius:50%;
+  border:1px solid var(--lamp);
+  background:transparent; color:var(--lamp);
+  font-size:0.9rem; cursor:pointer;
+  flex-shrink:0;
+  display:flex; align-items:center; justify-content:center;
+}
+.audio-bar{
+  flex:1; height:3px;
+  background:rgba(255,255,255,0.15);
+  position:relative;
+}
+.audio-bar-fill{
+  position:absolute; left:0; top:0; bottom:0;
+  width:0%;
+  background:var(--rose);
+}
+
+/* ---------- LETTER ---------- */
+.letter-section{
+  background:var(--ink-2);
+  padding:var(--sp-section) 0;
+  position:relative;
+}
+.lamp-glow{
+  position:absolute;
+  top:-10%; left:50%;
+  transform:translateX(-50%);
+  width:min(700px, 90vw);
+  height:500px;
+  background:radial-gradient(ellipse at center, rgba(232,163,77,0.16), transparent 70%);
+  pointer-events:none;
+}
+.letter-head{
+  text-align:center;
+  margin-bottom:clamp(2rem, 5vw, 3rem);
+}
+.letter-head .eyebrow{
+  font-size:var(--fs-label);
+  letter-spacing:0.35em;
+  text-transform:uppercase;
+  color:var(--lamp);
+}
+.letter-head h2{
+  font-family:'Cormorant Garamond', serif;
+  font-size:var(--fs-h2);
+  margin-top:0.8rem;
+}
+.letter-paper{
+  max-width:680px;
+  margin:0 auto;
+  background:linear-gradient(180deg, rgba(246,239,226,0.03), rgba(246,239,226,0.01));
+  border:1px solid rgba(246,239,226,0.12);
+  padding:clamp(1.8rem, 6vw, 3.6rem);
+  position:relative;
+}
+.letter-paper::before{
+  content:"";
+  position:absolute; left:0; top:0; bottom:0;
+  width:3px;
+  background:linear-gradient(180deg, var(--lamp), var(--rose));
+}
+.letter-paper p{
+  font-family:'Cormorant Garamond', serif;
+  font-size:var(--fs-letter);
+  line-height:1.9;
+  color:#ece6d8;
+}
+.letter-paper p + p{margin-top:1.3rem;}
+.letter-paper .sign{
+  margin-top:2.2rem;
+  font-style:italic;
+  color:var(--lamp);
+}
+
+/* ---------- FOOTER ---------- */
+footer{
+  padding:var(--sp-section) 0 4rem;
+  text-align:center;
+  position:relative;
+  z-index:1;
+}
+footer .big{
+  font-family:'Cormorant Garamond', serif;
+  font-size:clamp(1.8rem, 5vw, 3rem);
+  font-style:italic;
+  color:var(--rose);
+}
+footer .small{
+  margin-top:1rem;
+  font-size:var(--fs-label);
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  color:#6b7191;
+}
+</style>
+</head>
+<body>
+
+<canvas id="stars"></canvas>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="eyebrow">a story in two roll numbers</div>
+  <h1>Pinu <span class="amp">&amp;</span> Kira</h1>
+  <p class="sub">One classroom, one punishment, one revenge, one birthday text and every version of us since.</p>
+
+  <div class="distance">
+    <svg viewBox="0 0 620 90" preserveAspectRatio="none">
+      <path class="path" d="M20,45 C180,10 440,80 600,45"/>
+      <path class="pulse" d="M20,45 C180,10 440,80 600,45"/>
+      <g class="pin"><circle cx="20" cy="45" r="4"/><text x="20" y="68" text-anchor="middle">Vapi</text></g>
+      <g class="pin"><circle cx="600" cy="45" r="4"/><text x="600" y="68" text-anchor="middle">Ahmedabad</text></g>
+    </svg>
+    <div class="caption">353 km apart · <strong>zero distance felt</strong></div>
+  </div>
+
+  <div class="scroll-cue">scroll</div>
+</section>
+
+<!-- CH 1: SCHOOL -->
+<section class="chapter">
+  <div class="wrap">
+    <div class="chapter-head reveal">
+      <span class="chapter-num">I.</span>
+      <span class="chapter-date">Before we knew</span>
+    </div>
+    <h2 class="chapter-title reveal">Two roll numbers in the same classroom</h2>
+    <div class="reveal">
+      <p>We went to the same school. That's it. Not friends barely acquaintances. Just two names that happened to know the other one existed, the way you know a face in a corridor without ever learning its story.</p>
+      <p>There was a rule: every roll number took a turn cleaning the classroom in the second break. The day it was mine, you were the one supervising. And you made me do it <em>twice</em>. No idea, back then, that the girl making me sweep a floor twice would one day be the reason I get up in the morning.</p>
+    </div>
+    <div class="duty-grid">
+      <div class="duty-card reveal">
+        <div class="yr">Year One</div>
+        <p>My turn to clean. You're in charge. I do it once you're not satisfied. I do it twice. No explanation needed, none given.</p>
+      </div>
+      <div class="duty-card reveal">
+        <div class="yr">Year Two, the revenge</div>
+        <p>Roles flip. Now I'm in charge, and it's your turn. I make you do it twice too. Fair is fair. Neither of us knew we were writing chapter one.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CH 2: DIVERGING PATHS -->
+<section class="chapter">
+  <div class="wrap">
+    <div class="chapter-head reveal">
+      <span class="chapter-num">II.</span>
+      <span class="chapter-date">Different streets, same silence</span>
+    </div>
+    <h2 class="chapter-title reveal">Different streams, different lives, no us</h2>
+    <div class="reveal">
+      <p>After school, our paths split clean in two. Science for me, Commerce for you. Then further still you off to B.Com at SSR College, Silvasa. Me, buried in B.Tech at PDEU, Gandhinagar.</p>
+      <p>We each had our own lives running in the background, and neither was gentle. There were bad chapters on both sides the kind you don't put in a caption. At one point I wasn't really living, just getting through days. Neither of us was thinking about the other. There was no "us" yet. Just two people surviving their own storms, 353 km apart, with no idea they'd end up in each other's.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CH 3: THE SPARK -->
+<section class="chapter">
+  <div class="wrap">
+    <div class="chapter-head reveal">
+      <span class="chapter-num">III.</span>
+      <span class="chapter-date">3rd December 2024</span>
+    </div>
+    <h2 class="chapter-title reveal">A birthday text neither of us saw coming</h2>
+    <div class="reveal">
+      <p>One good day, out of nowhere, I wished you a happy birthday. Nothing planned, nothing calculated. Just a message. And somehow, that one text cracked something open.</p>
+      <p>From that day the conversation never really stopped. We started sharing our daily routines like it was normal, like we'd always done it. Then it became something else entirely.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CH 4: FILTERLESS -->
+<section class="chapter">
+  <div class="wrap">
+    <div class="chapter-head reveal">
+      <span class="chapter-num">IV.</span>
+      <span class="chapter-date">the months after</span>
+    </div>
+    <h2 class="chapter-title reveal">Filterless everything, meant everything</h2>
+    <div class="reveal">
+      <p>We stopped editing ourselves. Past traumas, secrets neither of us had told another living soul we just handed them to each other, no filter, no fear of what the other would think.</p>
+      <p>Late night talks that ran too long. Dumb jokes that made no sense to anyone but us. Truth or dare that got a little too honest. You carried my pain and my pointless jokes in the same breath you were the one person who stood by me at my lowest and emotionally pulled me out of the dark. You made me feel comfortable in a way I didn't know I needed. You made me feel <em>special</em>.</p>
+      <p>Normal friends became best friends became something we hadn't named yet. Unofficially together, acting like it, feeling like it just without the label. Two people who'd unknowingly fallen for each other and were too deep in it to notice the exact moment it happened.</p>
+    </div>
+    <div class="tags">
+      <span>late night calls</span>
+      <span>truth &amp; dare</span>
+      <span>zero filter</span>
+      <span>bad jokes, good therapy</span>
+      <span>secrets we'd never told anyone</span>
+    </div>
+  </div>
+</section>
+
+<!-- CH 5: THE STORM -->
+<section class="chapter">
+  <div class="wrap">
+    <div class="chapter-head reveal">
+      <span class="chapter-num">V.</span>
+      <span class="chapter-date">February 2026</span>
+    </div>
+    <h2 class="chapter-title reveal">The fight that almost ended us</h2>
+    <div class="reveal storm">
+      <p>It wasn't small. A long argument, the kind that leaves silence louder than words. For a moment it felt like this whatever "US" had quietly become was over.</p>
+      <p>But you didn't let it end. You put in the extra effort when it would've been easier to walk away. You held US together with both hands when I couldn't. That's not a small thing. That's the whole story, actually, condensed into one month.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CH 6: PROPOSAL -->
+<section class="chapter">
+  <div class="wrap">
+    <div class="chapter-head reveal">
+      <span class="chapter-num">VI.</span>
+      <span class="chapter-date">the turn</span>
+    </div>
+    <h2 class="chapter-title reveal">And then, you asked</h2>
+    <div class="highlight-box reveal">
+      <div class="date-big">15th March</div>
+      <p style="margin-top:1rem;">You proposed. I said yes to the only certainty I've ever fully trusted. From that day, we are together and we will be, for good.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CH 7: NO DISTANCE -->
+<section class="chapter">
+  <div class="wrap">
+    <div class="chapter-head reveal">
+      <span class="chapter-num">VII.</span>
+      <span class="chapter-date">353 km, always</span>
+    </div>
+    <h2 class="chapter-title reveal">We never decided to do long distance we just never felt it</h2>
+    <div class="reveal">
+      <p>We never sat down and made it official "long distance relationship," some label to brace for. We just never felt the 353 km between Vapi and Ahmedabad. Not once. We've never held hands, and somehow our emotional connection operates on a level hands couldn't reach anyway.</p>
+      <p>Full spectrum of us: fun, cute moments, arguments over nothing, studying together on a call because that counts too, nights that stretched into mornings on video, and yes I love kissing you digitally, screen to screen, because it's not acting and it's not pretending. It's just the closest my lips can get to yours right now, and I mean every one of them and all my love is only for you just for you.</p>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="chapter gallery-section">
+  <div class="wrap">
+    <div class="chapter-head reveal">
+      <span class="chapter-num">VIII.</span>
+      <span class="chapter-date">30 stars, 30 reasons</span>
+    </div>
+    <h2 class="chapter-title reveal">Every photo has a voice</h2>
+    <p class="reveal" style="margin-bottom:2rem;">Tap a star. Read the caption.</p>
+    <div class="star-grid" id="starGrid"></div>
+  </div>
+</section>
+
+<!-- GALLERY MODAL -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-box">
+    <button class="modal-close" id="modalClose">&times;</button>
+    <div class="modal-photo-wrap">
+      <img id="modalPhoto" class="modal-photo" src="" alt="">
+    </div>
+    <p class="modal-caption" id="modalCaption"></p>
+  </div>
+</div>
+
+<!-- LETTER -->
+<section class="letter-section">
+  <div class="lamp-glow"></div>
+  <div class="wrap">
+    <div class="letter-head reveal">
+      <div class="eyebrow">for you, Kira</div>
+      <h2>A letter I mean, word for my world</h2>
+    </div>
+    <div class="letter-paper reveal">
+      <p>Kira,</p>
+      <p>I want you to know something plainly, without a joke to hide behind this time: you are the reason I'm happy. Not a reason <em>the</em> reason. You were there when I needed someone most, at a time I wasn't sure I'd come out of, and you stayed. Not for a night. Not for a week. You stayed.</p>
+      <p>I've thought about this a lot, and I don't think I've earned it. I've been rude to you sharp when I shouldn't have been, distant when you needed me close and you were still there. I've done so little to deserve the way you love me, and yet you keep choosing to anyway, every single day, from 353 km away, like the distance is nothing but a number on a map.</p>
+      <p>You didn't just supervise a cleaning duty and make my life difficult twice in Year One. You've been supervising my heart ever since, quietly, patiently, making sure I clean up the parts of myself I'd given up on. That's the twist neither of us saw coming back in that classroom.</p>
+      <p>So love you for the birthday text that started it, for every filterless 2 a.m. conversation, for fighting to keep US alive in February when it would've been easier to let go, for saying yes on the 15th of March, and for loving me more than I've ever given you reason to.</p>
+      <p>I love you. Not performed. Not typed for effect. Just true.</p>
+      <p class="sign">Your Pinu</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="big">Kajukatli, always.</div>
+  <div class="small">Pinu &amp; Kira · since 03.12.2024 · official since 15.03.2026</div>
+</footer>
+
+<script>
+// starfield
+(function(){
+  const canvas = document.getElementById('stars');
+  const ctx = canvas.getContext('2d');
+  let w, h, stars;
+  function resize(){
+    w = canvas.width = window.innerWidth;
+    h = canvas.height = window.innerHeight;
+    const count = Math.floor((w*h)/9000);
+    stars = Array.from({length:count}, ()=>({
+      x: Math.random()*w,
+      y: Math.random()*h,
+      r: Math.random()*1.2+0.2,
+      a: Math.random()*0.6+0.15,
+      s: Math.random()*0.02+0.005
+    }));
+  }
+  function draw(){
+    ctx.clearRect(0,0,w,h);
+    ctx.fillStyle = '#e8a34d';
+    stars.forEach(st=>{
+      st.a += st.s;
+      const alpha = Math.abs(Math.sin(st.a));
+      ctx.globalAlpha = alpha*0.7+0.1;
+      ctx.beginPath();
+      ctx.arc(st.x, st.y, st.r, 0, Math.PI*2);
+      ctx.fill();
+    });
+    ctx.globalAlpha = 1;
+    requestAnimationFrame(draw);
+  }
+  window.addEventListener('resize', resize);
+  resize();
+  draw();
+})();
+
+// ===== GALLERY DATA =====
+// EDIT HERE: put your 30 captions below (order = photo 1 to 30).
+// Photo files: put images at  photos/01.jpg  photos/02.jpg ... photos/30.jpg
+// (jpg or jpeg, padded or unpadded numbers all work)
+const GALLERY = [
+  "TAMNE jovu etle mara divas nu sauthi sundar moment ❤️",
+  "Tari smile joi ne lage che ke duniya ma badhu saru thai jashe 🥹",
+  "Tane joya pachi biju kai jovanu man j nathi thatu 💚",
+  "Tu mara mate photo nathi... ek feeling che ❤️",
+  "Varsad karta pan vadhu sukoon tari sathe che 🤍",
+  "Bhagwan pase kai mangyu hatu ke nai khabar nathi... pan tane malvu e moti gift hati 🫶",
+  "Tari hasi... mara badha stress nu medicine che ❤️",
+  "Filter cute hoy... pan mara mate asli beauty to tu j che 🍓❤️(Thodi strawberry khai lau 👉🏻👈🏻)",
+  "Mirror ma tu tane joy che... ane hu maru future 🥹",
+  "Aakash ketlu pan sundar hoy... mari najr to tari upar j atki jay 💙",
+  "Tu mara badha 'kem?' nu ek j answer che ❤️",
+  "Sunset pan tari aagal thodu fade lage che 🌇",
+  "Bas ek vaat nu dar lage che... kyarek tane khoi na dau ❤️",
+  "Safar ketlo pan moto hoy... bas passenger seat par tu hoy 🤍",
+  "Tu najr feravi de... pan maru dil tari pase j rahe che 🥹",
+  "Tari ek selfie... ane maro puro divas set 😌❤️",
+  "Tane hasata jovu... e pan ek blessing che 🫶",
+  "Simple che... etle j khas che 🤍",
+  "Mari favourite jagya? Jya tu hoy tya ❤️",
+  "Tari sathe hoy tyare badhu perfect lage che 🤍",
+  "Tari aankho ma etlu sukoon che... ke hu duniya bhuli jau 🥹",
+  "Hu to bas e hawa ne jealous chu... je roj tara vaal sathe rame che 😌",
+  "Life jacket to pehri che... pan mara prem thi bachvu impossible che 😏❤️",
+  "Aa smile mate hu roj hajaro vaar dil hari saku ❤️",
+  "Tara messy hair pan perfect lage che... jem tu ❤️",
+  "Hu duniya ni badhi jagya joi lais... pan mari favourite view to tu j rahe ❤️",
+  "Sunset sundar hato... pan mara mate to aa photo ma suraj karta pan vadhu chamkatu koi hatu ❤️",
+  "Aaj sudhi sunset favourite hato... pachi tu mali 🤍",
+  "Tane jovu etle dil automatically smile kari de 😊",
+  "Flowers sundar hoy... pan mara favourite bloom to tu che 🌼❤️"
+];
+
+(function(){
+  const grid = document.getElementById('starGrid');
+  GALLERY.forEach((caption, i)=>{
+    const n = String(i+1).padStart(2,'0');
+    const btn = document.createElement('button');
+    btn.className = 'star-photo';
+    const candidates = [`photos/${n}.jpg`, `photos/${n}.jpeg`, `photos/${i+1}.jpg`, `photos/${i+1}.jpeg`];
+    const probe = new Image();
+    let ci = 0;
+    probe.onerror = function(){ ci++; if(ci < candidates.length){ probe.src = candidates[ci]; } };
+    probe.onload = function(){ btn.style.backgroundImage = `url('${candidates[ci]}')`; btn.dataset.photo = candidates[ci]; };
+    probe.src = candidates[ci];
+    btn.dataset.photo = candidates[0];
+    btn.dataset.caption = caption;
+    btn.innerHTML = `<span class="num">${n}</span>`;
+    grid.appendChild(btn);
+  });
+
+  const overlay = document.getElementById('modalOverlay');
+  const modalPhoto = document.getElementById('modalPhoto');
+  const modalCaption = document.getElementById('modalCaption');
+  const closeBtn = document.getElementById('modalClose');
+
+  function openModal(btn){
+    const n2 = btn.querySelector('.num').textContent;
+    const i2 = parseInt(n2,10);
+    const photoCandidates = [btn.dataset.photo, `photos/${n2}.jpg`, `photos/${n2}.jpeg`, `photos/${i2}.jpg`, `photos/${i2}.jpeg`];
+    let pci = 0;
+    modalPhoto.onerror = function(){ pci++; if(pci < photoCandidates.length){ modalPhoto.src = photoCandidates[pci]; } };
+    modalPhoto.src = photoCandidates[0];
+    modalCaption.textContent = btn.dataset.caption;
+    overlay.classList.add('open');
+  }
+  function closeModal(){
+    overlay.classList.remove('open');
+  }
+
+  grid.addEventListener('click', (e)=>{
+    const btn = e.target.closest('.star-photo');
+    if(btn) openModal(btn);
+  });
+  closeBtn.addEventListener('click', closeModal);
+  overlay.addEventListener('click', (e)=>{ if(e.target === overlay) closeModal(); });
+  document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeModal(); });
+})();
+
+// reveal on scroll
+(function(){
+  const els = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, {threshold:0.15});
+  els.forEach(el=>io.observe(el));
+})();
+</script>
+
+</body>
+</html>
